@@ -65,11 +65,7 @@ public:
     }
 
 
-   sf::FloatRect getGlobalBounds() const {
-        return m_ball.getGlobalBounds();
-    }
-    
-
+  
     bool outOfBounds() {
         if (m_position.x <= 0 || m_position.x >= SCREEN_WIDTH - BALL_SIZE * 2) {
 
@@ -80,10 +76,47 @@ public:
     }
 
     void reverseXDir() {
-        m_direction.x = -m_direction.x;
+        m_direction.x = -m_direction.x; 
+		 std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_real_distribution<float> direction(-1.0f, 1.0f);
+
+         
+        float dx = direction(gen) * m_ball_speed;
+        float dy = direction(gen) * m_ball_speed;
+
+        std::cout << dx << "\n";
+        if (dx == 0) {
+            std::cout << "dx is 0";
+            dx = m_ball_speed;
+        }
+            
+        if (dy == 0) dy = m_ball_speed;
+        m_direction.y = dy;
     }
 
-   
+
+
+
+
+
+	   void setPosition(float x, float y) {
+       m_position.x = x;            
+       m_position.y = y;
+       m_ball.setPosition(m_position); 
+   }
+
+
+    sf::FloatRect getGlobalBounds() const {
+        return m_ball.getGlobalBounds();
+    }
+    
+
+   sf::Vector2f getPosition() const {
+       return m_position;
+   }
+
+
     float getBallX() {
         return m_position.x;
     }
