@@ -11,7 +11,7 @@
 
 ## 🎥 Screenshots
 
-![pong gameplay](pong.jpg)
+![pong gameplay](pong.png)
 
 ![pong gameplay gif](pong.gif)
 
