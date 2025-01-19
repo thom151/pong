@@ -62,9 +62,17 @@ public:
 
  
      void collided(Ball& ball) {
-         if (m_rectangle.getGlobalBounds().intersects(ball.getGlobalBounds()))
-             ball.reverseXDir();
-    }
+         if (m_rectangle.getGlobalBounds().intersects(ball.getGlobalBounds())) {
+			  ball.reverseXDir();
+
+             if (ball.getPosition().x < m_rectangle.getPosition().x) {
+                 ball.setPosition(m_rectangle.getPosition().x - BALL_SIZE, ball.getPosition().y);
+             }
+             else {
+                 ball.setPosition(m_rectangle.getPosition().x + m_rectangle.getSize().x, ball.getPosition().y);
+             }
+         }
+      }
 
 
      void aiMove(Ball& ball, float dt) {

@@ -136,7 +136,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Project2.cpp" />
+    <ClCompile Include="pong.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ball.h" />
